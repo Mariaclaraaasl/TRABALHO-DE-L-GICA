@@ -1,0 +1,73 @@
+contac=[]
+propriet=[]
+saldo=[]
+
+def conta(cont,proprietari):
+    contac.append(cont)
+    propriet.append(proprietari)
+    saldo.append(0)    
+    return "cadastro concluído com sucesso"
+
+def pesquisar():  
+    cont = 0
+    while cont < len(contac):
+        print("Conta: ", contac[cont], " ", "Proprietário: ", propriet[cont], " Saldo: ", saldo[cont])       
+        cont += 1
+        
+def depositar(numero, deposito):
+    if numero in contac:
+        posicao = contac.index(num)
+        saldo[posicao]= (saldo[posicao]) + deposito        
+        return "deposito realizado com sucesso" 
+     
+def transferencia(origem,destino,valor):
+    if origem in contac and destino in contac:
+        posicao_origem=contac.index(origem)
+        posicao_destino=contac.index(destino)
+        if saldo[posicao_origem] >= valor:
+            saldo[posicao_origem]-= valor
+            saldo[posicao_destino]+= valor 
+        return "transferencia realizada com sucesso"
+        
+def sacar(nuk):
+    nuk= float(input("digite o valor que deseja sacar"))
+    if num in contac:
+        posicao=contac.index(num)
+        saldo[posicao]=(saldo[posicao]) - nuk
+        return "saque realizado com sucesso"
+              
+op = 10
+while op != 0:
+    op= int (input("digite sua opçao:"+
+                    "\n 1 - cadastrar uma conta" + 
+                    "\n 2 - pesquisar " +
+                    "\n 3 - depositar" +
+                    "\n 4 - transferir" +
+                    "\n 5 - saque" +
+                    "\n 0 - feche o sistema"))
+    
+    
+    if op == 1:
+        co = int (input("digite o numero da conta"))
+        proprietario = (input ("digite o nome do proprietario"))
+        print(conta(co, proprietario))
+    elif op == 2:        
+        pesquisar()  
+    elif op == 3:
+        num = int(input("Digite o número da conta"))  
+        valor = float(input("digite o valor do deposito")) 
+        retorno = depositar(num, valor)   
+        print(retorno) 
+    elif op == 4:
+        origem= int(input("digite o numero da conta que irá realizar a transferencia"))
+        destino= int(input("digite o numero da conta que irá receber a tranferencia"))
+        valor=int(input("digite o valor a ser transferido"))
+        transferencia(origem, destino, valor)
+        
+    elif op == 5:
+        sas = float(input("numero da conta"))
+        sacar(valor)
+        
+        
+        
+    
